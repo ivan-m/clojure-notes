@@ -1,0 +1,42 @@
+* Why are you looking at Clojure?
+
+Yes, [[http://clojure.org/][Clojure]] is a dynamically-typed JVM language with no
+language-level management of side-effects, three reasons that - as a
+Haskeller - reduces its appeal...
+
+... until I /needed/ a JVM language to try out different No-SQL DBs
+(most of the ones I was looking at were on the JVM), and found that
+[[http://www.scala-lang.org/][Scala]] was too "what the?" for my tastes (including opinions of other
+people that I'm working with), [[https://github.com/Frege/frege][Frege]] seems a bit too immature (even
+though we use Haskell for our main product) and none of the other
+languages really appealed to me (I /definitely/ didn't want to use
+Java!).
+
+Besides, Clojure has some good points going for it: it seems to
+encourage a functional style with managed side-effects (just not
+enforced like in Haskell) and it uses STM for concurrency.
+
+Furthermore, I don't mind parentheses (note that I'm writing this in
+[[http://orgmode.org/][org-mode]] in Emacs) and one of the DBs I'm investigating is [[http://www.datomic.com/][Datomic]],
+which is written in Clojure.
+
+* How I'm learning
+
+I tried to find some kind of "I know how to program, I just want to
+know how to program in /Clojure/" tutorial (ideally aimed at
+Haskellers, similar in vein to [[https://wiki.haskell.org/Haskell_Tutorial_for_C_Programmers][Haskell Tutorial for C Programmers]] but
+sufficing for something akin to [[http://book.realworldhaskell.org/][Real World Haskell]]) which doesn't
+assume that it needs to teach me what a number is, what a ~String~ is,
+etc.
+
+But I couldn't find anything in that vein: most online tutorials seem
+to assume you've never programmed before.  There did seem to be a
+start at "Learn Clojure the Hard Way" by a few people, but without any
+updates for a few years and only a few chapters written.  The closest
+thing I can find to being thrown into the deep-end of Clojure was a
+blog post entitled [[http://mishadoff.com/blog/clojure-design-patterns/][Clojure Design Patterns]]; I was able to get an idea
+of the syntax, etc. by reading this.  The rest of the blanks I filled
+in using [[http://www.braveclojure.com/][Clojure for the Brave and True]].
+
+So I hope that this document becomes in part an aid in people trying
+to pick Clojure up quickly.
