@@ -20,7 +20,7 @@ Furthermore, I don't mind parentheses (note that I'm writing this in
 [[http://orgmode.org/][org-mode]] in Emacs) and one of the DBs I'm investigating is [[http://www.datomic.com/][Datomic]],
 which is written in Clojure.
 
-* How I'm learning
+** How I'm learning
 
 I tried to find some kind of "I know how to program, I just want to
 know how to program in /Clojure/" tutorial (ideally aimed at
@@ -40,3 +40,39 @@ in using [[http://www.braveclojure.com/][Clojure for the Brave and True]].
 
 So I hope that this document becomes in part an aid in people trying
 to pick Clojure up quickly.
+
+
+* Quick Summary
+
+** Things to like
+
+Variable-argument functions are nice, even if they /are/ implemented
+by basically pattern matching on the number of arguments provided.
+
+** Things to dislike
+
+(I'm ignoring anything to do with the JVM here, like the utter joy in
+dealing with security certificates in corporate environments.)
+
+One of the motivations behind [[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs][SICP]] is (from the Preface to the 1st Edition):
+
+#+BEGIN_QUOTE
+This is one great advantage of Lisp-like languages: They have very few
+ways of forming compound expressions, and almost no syntactic
+structure. [...] After a short time we forget about syntactic details
+of the language (because there are none) [...]
+#+END_QUOTE
+
+Yet whilst it is most definitely a Lisp-like language, the various
+symbols and other syntactical constructs seems designed in part to
+make the SICP authors cry.
+
+In addition to this, there seems to be a lot more fiddling required in
+terms of file-structure, layout, etc.: the (current? there seems to be
+mention of others) build tool [[http://leiningen.org/][Leiningen]] is a lot more opinionated in
+terms of project filestructure (in that you start a project by asking
+it to create a template, and then putting files where it tells you
+to); there is seemingly extra metadata files used for /reader
+conditionals/, and even trying to have a system-wide install of a
+helper tool for the REPL requires specifying the exact version in a
+configuration file.
