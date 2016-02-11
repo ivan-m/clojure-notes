@@ -1,3 +1,9 @@
+#+TITLE:  Clojure from a Haskell perspective
+#+AUTHOR: Ivan Lazar Miljenovic
+#+EMAIL:  Ivan.Miljenovic@gmail.com
+#+LANGUAGE: en
+#+STARTUP: showall
+
 * Why are you looking at Clojure?
 
 Yes, [[http://clojure.org/][Clojure]] is a dynamically-typed JVM language with no
