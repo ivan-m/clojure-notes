@@ -55,6 +55,10 @@ to pick Clojure up quickly.
 Variable-argument functions are nice, even if they /are/ implemented
 by basically pattern matching on the number of arguments provided.
 
+Having in-built documentation support in the REPL using ~(doc
+function-name)~; the closest Haskell has is [[http://hackage.haskell.org/package/haskell-docs][haskell-docs]].  There is
+also ~(source function-name)~ for non-inbuilt functions.
+
 ** Things to dislike
 
 (I'm ignoring anything to do with the JVM here, like the utter joy in
@@ -82,3 +86,8 @@ to); there is seemingly extra metadata files used for /reader
 conditionals/, and even trying to have a system-wide install of a
 helper tool for the REPL requires specifying the exact version in a
 configuration file.
+
+Finally: the REPL is /slow/ to start-up... that said, there seems to
+be less of a need to restart it often like with =ghci= (e.g. ~.cabal~
+file changed? Restart ghci!  Want to change to a different section of
+your project? Restart ghci!)
