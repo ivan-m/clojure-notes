@@ -183,7 +183,7 @@ some kind of reader macro.
 
 | ~#{}~        | Creates a Set                        |
 | ~#"pattern"~ | Creates a regex (parsed at run-time) |
-| ~#'~         | Var-quote; same as using ~(var ...)~ |
+| ~#'~         | Var-quote; same as using =(var ...)= |
 | ~#(..)~      | Create an anonymous function.        |
 | ~#_~         | Ignore next form.                    |
 
