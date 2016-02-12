@@ -91,3 +91,115 @@ Finally: the REPL is /slow/ to start-up... that said, there seems to
 be less of a need to restart it often like with =ghci= (e.g. ~.cabal~
 file changed? Restart ghci!  Want to change to a different section of
 your project? Restart ghci!)
+
+* Symbols
+
+Clojure has a much greater /syntactical/ usage of symbolic characters
+than Haskell does.  Not only does it use more symbols, it also tends
+to overload them (in contrast to Haskell potentially having a
+Perl-like symbol soup, especially when using [[http://hackage.haskell.org/package/lens][certain libraries]]...).
+
+Because of this, I figured symbols deserved their own top-level
+section (especially since motivation for writing these notes cam in
+part when I kept getting confused by the myriad ways that the ~#~
+symbol kept getting used).
+
+These seem to be officially documented [[http://www.clojure.org/reference/reader#_symbols][here]].
+
+** Parentheses
+
+That is: ~(~, ~)~
+
+These are used for the actual syntactical structure.  Each parentheses
+pair corresponds to a new expression.
+
+The other (albeit related) usage of parentheses are for writing
+literal lists such as ~'(a b c)~.
+
+** Square brackets
+
+That is: ~[~, ~]~
+
+These create literal /vectors/.  They are also used for
+pattern-matching function arguments (which may be considered to be a
+vector of arguments).
+
+** Braces
+
+That is: ~{~, ~}~
+
+These are used to denote both maps (that is key-value pairs: a
+combination of ~Data.Map~ and record data structures; referred to as
+"dictionaries" in languages like Python) and sets (ala ~Data.Set~).
+
+The two are distinguished syntactically by sets starting with a ~#~
+(e.g. ~{:a :b}~ is a map; ~#{:a :b}~ is a set).
+
+** Quote
+
+That is: ~'~
+
+Quotes something, that is it produces the literal.  So ~(+ 1 2 3)~
+calculates the value ~6~, whilst ~'(+ 1 2 3)~ is a 4-element list
+containing a function and three numeric literals.
+
+Equivalent to using the ~quote~ function.
+
+** Colon
+
+That is: ~:~
+
+Creates an /keyword/, which cannot contain a ~.~.  Typically used as
+dictionary keys.
+
+** Semicolon
+
+That is: ~;~
+
+Starts a single-line comment.  There don't seem to be any block
+comments.
+
+At least in the Emacs clojure-mode, it seems to follow the same
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Comment-Tips.html][convention]] as for Emacs Lisp; that is:
+
+| ~;~    | Align comments to the same column on the right of source code. |
+| ~;;~   | Align with code.  Use this for "block" comments.               |
+| ~;;;~  | Align on left margin (headings, etc.).                         |
+| ~;;;;~ | Align on left margin (top-level headings).                     |
+
+** At-symbol
+
+That is: ~@~
+
+Dereferences a form.  I /think/ this has something to do with
+partially applying functions.
+
+** Hash
+
+That is: ~#~
+
+This seems to fill a multitude of use-cases in Clojure, all to do with
+some kind of reader macro.
+
+| ~#{}~        | Creates a Set                        |
+| ~#"pattern"~ | Creates a regex (parsed at run-time) |
+| ~#'~         | Var-quote; same as using ~(var ...)~ |
+| ~#(..)~      | Create an anonymous function.        |
+| ~#_~         | Ignore next form.                    |
+
+** Caret
+
+That is: ~^~
+
+Adds metadata to an object.  Seems to be used largely to add type
+information when dealing with Java (and other JVM language) code.
+
+** Others
+
+Syntax-quote: ~`~
+
+Unquote: =~=
+
+Unquote-splicing: =~@=
+
+No idea as yet.
