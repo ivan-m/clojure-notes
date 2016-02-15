@@ -218,6 +218,104 @@ Unquote-splicing: =~@=
 
 No idea as yet.
 
+* Writing code
+
+** Implicit Maybe Monad
+
+Like other Lisps, Clojure seems to operate in some kind of implicit
+~Maybe~ (or more precisely something like ~IO (Maybe a)~) monad.
+
+This differs from languages like Java, etc. where applying a function
+to ~nil~ (the equivalent of ~Nothing~) then the ~nil~ just propagates.
+As such, there's no need (or at least a greatly reduced need) for
+~isNull~ checks, or constantly doing ~fmap~.  And partial functions
+typically return ~nil~ rather than throwing an error.
+
+** Function application.
+
+It's a Lisp.  ~(function-name arg1 arg2 arg3 ...)~.
+
+** Defining a value
+
+~(def name optional-doc-string optional-initial-value)~.
+
+** Defining new functions
+
+You typically use ~defn~ to define functions:
+
+#+BEGIN_SRC clojure
+  (defn my-function-name
+    "This is an optional docstring; equivalent to having a Haddock
+    comment before a function in Haskell."
+    [space separated list of arguments]
+    (function definition goes here and does stuff)
+    (another thing to do)
+    (function result is result of last statement))
+#+END_SRC
+
+Function arguments seem to be a vector, and doing pattern matching on
+list-like data structures seems to work using just partial matching
+(this is referred to as /destructuring/); for example, here's how you
+can define the equivalent of the Haskell ~head~ function (which
+Clojure actually calls ~first~):
+
+#+BEGIN_SRC clojure
+  (defn head
+    "Extract the first element of a list, which must be non-empty."
+    [[x]]
+    x)
+#+End_SRC
+
+Trying this out:
+#+BEGIN_SRC clojure
+  user=> (doc head)
+  -------------------------
+  user/head
+  ([[x]])
+    Extract the first element of a list, which must be non-empty.
+  nil
+  user=> (head '(1 2 3))
+  1
+  user=> (head [1 2 3])
+  1
+  user=> (head [])
+  nil
+  user=> (head nil)
+  nil
+#+END_SRC
+
+*** Variadic functions
+
+A variadic function is defined by having multiple entry points into a
+function, each with a different number of arguments:
+
+#+BEGIN_SRC clojure
+  (defn i-like
+    "List of things that I like"
+    ([]
+     "I like lots of things!")
+    ([thing]
+     (str "I like this thing: " thing))
+    ([thing & other-things]
+     (str "I like this thing: " thing
+          "; as well as all of these other things: "
+          (clojure.string/join ", " other-things))))
+#+END_SRC
+
+(Note that you can't just try and use ~&~ to just get a list of things
+at the end; you need to have at least as many arguments as any of the
+explicit pattern matches.)
+
+*** Anonymous functions
+
+The equivalent of doing ~\x y -> x + y~ in Haskell is ~(fn [x y] (+ x
+y))~, or equivalently ~(#(+ %1 %2))~ (using positional arguments).
+
+Note that ~defn~ is equivalent to calling ~def~ with an anonymous
+function as the initial value.
+
+** Statement blocks
+
 * Other conventions
 
 + Use hyphens-delimited names rather than camelCase or snake_case
