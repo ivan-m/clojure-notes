@@ -135,6 +135,13 @@ combination of ~Data.Map~ and record data structures; referred to as
 The two are distinguished syntactically by sets starting with a ~#~
 (e.g. ~{:a :b}~ is a map; ~#{:a :b}~ is a set).
 
+** Comma
+
+That is: ~,~
+
+Counts as whitespace.  That is, ~'(1 2 3)~ and ~'(1, 2, 3)~ are
+identical.  Seems to be used more for readability than anything else.
+
 ** Quote
 
 That is: ~'~
@@ -193,6 +200,13 @@ That is: ~^~
 
 Adds metadata to an object.  Seems to be used largely to add type
 information when dealing with Java (and other JVM language) code.
+
+** Ampersand
+
+That is: ~&~
+
+Used to separate optional additional arguments from the named ones in
+variadic functions.
 
 ** Others
 
