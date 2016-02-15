@@ -217,3 +217,12 @@ Unquote: =~=
 Unquote-splicing: =~@=
 
 No idea as yet.
+
+* Other conventions
+
++ Use hyphens-delimited names rather than camelCase or snake_case
+  (seems to be typically referred to as /kebab-case/ in Clojure).
+
++ 2-space indentation.
+
++ Closing parens all go at the end of the last statement.
